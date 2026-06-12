@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro ❤️ Elaine</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(to bottom,#050816,#111827);
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.2rem;
+}
+
+button{
+margin-top:20px;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+section{
+max-width:1000px;
+margin:auto;
+padding:50px 20px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+height:350px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 0 15px rgba(255,255,255,.15);
+}
+
+.timeline{
+border-left:3px solid #ff4d88;
+padding-left:20px;
+margin-top:20px;
+}
+
+.timeline div{
+margin-bottom:20px;
+}
+
+footer{
+text-align:center;
+padding:50px 20px;
+}
+
+#contador{
+font-size:22px;
+margin-top:20px;
+text-align:center;
+color:#ff9ac0;
+}
+
+.coracoes{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.coracao{
+position:absolute;
+color:#ff4d88;
+animation:subir 8s linear infinite;
+font-size:20px;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="coracoes" id="coracoes"></div>
+
+<div class="hero">
+<div>
+<h1>Pedro ❤️ Elaine</h1>
+<p>No céu dos teus braços encontrei meu lugar favorito.</p>
+
+<button onclick="document.getElementById('conteudo').scrollIntoView({behavior:'smooth'})">
+Abrir Surpresa 💖
+</button>
+</div>
+</div>
+
+<section id="conteudo">
+
+<div class="card">
+
+<h2 style="text-align:center;">Uma Mensagem Para Você ❤️</h2>
+
+<br>
+
+<p style="text-align:center;line-height:1.8;">
+Elaine,
+<br><br>
+Fiz essa página porque queria te entregar algo diferente.
+Cada foto, cada lembrança e cada momento ao seu lado tem um significado especial para mim.
+<br><br>
+Obrigado por existir na minha vida.
+Você é uma pessoa incrível e muito importante para mim.
+<br><br>
+Com carinho,
+<br>
+<b>Pedro ❤️</b>
+</p>
+
+<div id="contador"></div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 style="text-align:center;">Nossas Fotos 📸</h2>
+
+<div class="gallery">
+<img src="IMG-20260506-WA0118.jpg" alt="Foto 1">
+<img src="IMG-20260506-WA0127.jpg" alt="Foto 2">
+<img src="IMG-20260510-WA0066.jpg" alt="Foto 3">
+</div>
+
+</section>
+
+<section>
+
+<h2 style="text-align:center;">Nossa História ✨</h2>
+
+<div class="timeline">
+
+<div>
+<h3>❤️ 26/03/2026 - 19:24</h3>
+<p>O dia escolhido para marcar nossa história.</p>
+</div>
+
+<div>
+<h3>📸 Nossas Memórias</h3>
+<p>Cada foto guarda um momento especial.</p>
+</div>
+
+<div>
+<h3>🌙 Nosso Futuro</h3>
+<p>Ainda existem muitas páginas para escrever juntos.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>Eu Te Amo ❤️</h2>
+
+<br>
+
+<p>
+Se você chegou até aqui, saiba que tudo isso foi feito pensando em você.
+</p>
+
+</footer>
+
+<script>
+
+const data = new Date("2026-03-26T19:24:00");
+
+function atualizar(){
+
+const agora = new Date();
+const diferenca = data - agora;
+
+if(diferenca <= 0){
+document.getElementById("contador").innerHTML =
+"❤️ Nosso dia especial chegou ❤️";
+return;
+}
+
+const dias = Math.floor(diferenca/(1000*60*60*24));
+const horas = Math.floor((diferenca/(1000*60*60))%24);
+const minutos = Math.floor((diferenca/(1000*60))%60);
+const segundos = Math.floor((diferenca/1000)%60);
+
+document.getElementById("contador").innerHTML =
+`Faltam ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos ❤️`;
+
+}
+
+setInterval(atualizar,1000);
+atualizar();
+
+function criarCoracao(){
+const coracao=document.createElement("div");
+coracao.classList.add("coracao");
+coracao.innerHTML="❤️";
+coracao.style.left=Math.random()*100+"vw";
+coracao.style.fontSize=(Math.random()*20+15)+"px";
+document.getElementById("coracoes").appendChild(coracao);
+
+setTimeout(()=>{
+coracao.remove();
+},8000);
+}
+
+setInterval(criarCoracao,500);
+
+</script>
+
+</body>
+</html>
